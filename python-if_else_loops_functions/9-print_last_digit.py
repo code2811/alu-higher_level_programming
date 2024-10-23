@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-def islower(c):
-    if ord(c) >= 97 and ord(c) <= 122:
-        return True
-    else:
-        return False
+def print_last_digit(number):
+    digit = abs(number) % 10
+    print(f"{digit}", end="")
+    return digit
