@@ -1,37 +1,22 @@
-class Rectangle:
-    def __init__(self, width=0, height=0):
-        self.width = width
-        self.height = height
+my_rectangle1 = Rectangle(8, 4)
+print(my_rectangle1)
 
-    @property
-    def width(self):
-        return self._width
+Rectangle.print_symbol = "C"
+print(my_rectangle1)
 
-    @width.setter
-    def width(self, value):
-        if not isinstance(value, int):
-            raise TypeError("width must be an integer")
-        if value < 0:
-            raise ValueError("width must be >= 0")
-        self._width = value
+my_rectangle2 = Rectangle(2, 1)
+print(my_rectangle2)
 
-    @property
-    def height(self):
-        return self._height
+my_rectangle1.print_symbol = "H"
+print(my_rectangle1)
+print(my_rectangle2)
 
-    @height.setter
-    def height(self, value):
-        if not isinstance(value, int):
-            raise TypeError("height must be an integer")
-        if value < 0:
-            raise ValueError("height must be >= 0")
-        self._height = value
+Rectangle.print_symbol = "K"
+print(my_rectangle2)
 
-    def area(self):
-        return self.width * self.height
+my_rectangle1.print_symbol = 89
+print(my_rectangle1)
 
-    def perimeter(self):
-        if self.width == 0 or self.height == 0:
-            return 0
-        return 2 * (self.width + self.height)
+my_rectangle1.print_symbol = ["Holberton", "School"]
+print(my_rectangle1)
 
