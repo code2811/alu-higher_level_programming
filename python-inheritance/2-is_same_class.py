@@ -1,12 +1,20 @@
-def lookup(obj):
+#!/usr/bin/python3
+"""
+Module containing a function that checks if an object is exactly an
+instance of a specified class.
+"""
+
+def is_same_class(obj, a_class):
     """
-    Returns the list of available attributes and methods of an object.
+    Returns True if the object is exactly an instance of the specified class,
+    and False otherwise.
 
     Args:
-        obj (object): The object to inspect.
+        obj (object): The object to check.
+        a_class (type): The class to compare against.
 
     Returns:
-        list: A list of strings containing the names of the available
-        attributes and methods of the object.
+        bool: True if the object is exactly an instance of the specified class,
+        False otherwise.
     """
-    return dir(obj)
+    return type(obj) is a_class
