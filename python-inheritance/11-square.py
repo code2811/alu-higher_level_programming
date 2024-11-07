@@ -16,9 +16,14 @@ class Square(Rectangle):
 
         Args:
             size (int): The size of one side of the square.
+
+        Raises:
+            TypeError: If size is not an integer.
+            ValueError: If size is not a positive integer.
         """
         self.integer_validator("size", size)
         self.__size = size
+        # Call the Rectangle initializer with width and height equal to size
         super().__init__(size, size)
 
     def area(self):
