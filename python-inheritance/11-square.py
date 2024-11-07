@@ -2,7 +2,6 @@
 """Define a Square class that inherits from Rectangle."""
 from rectangle import Rectangle
 
-
 class Square(Rectangle):
     """Represent a square."""
 
@@ -23,7 +22,3 @@ class Square(Rectangle):
     def __str__(self):
         """Return the print and string representation of a Square."""
         return "[Square] {}/{}".format(self.__size, self.__size)
-Last edited just now
-
-
-
