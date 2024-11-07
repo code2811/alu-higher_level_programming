@@ -1,6 +1,9 @@
+#!/usr/bin/python3
+"""Define a class MyList that inherits from list."""
+
 class MyList(list):
-         """A list that can print itself in sorted order."""
-         
-         def print_sorted(self):
-             """Print the list in ascending sorted order."""
-             print(sorted(self))
+    """Implement sorted printing for the list."""
+
+    def print_sorted(self):
+        """Print the list, but sorted in ascending order."""
+        print(sorted(self))
