@@ -11,4 +11,4 @@ def class_to_json(obj):
     Returns:
         dict: A dictionary description of the object.
     """
-    return obj.__dict__
+    return {key: value for key, value in obj.__dict__.items() if isinstance(value, (list, dict, str, int, bool))}_
