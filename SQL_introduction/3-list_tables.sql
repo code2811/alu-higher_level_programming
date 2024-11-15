@@ -1,2 +1,2 @@
--- List all tables in the 'mysql' database
-SHOW TABLES FROM database_name;
+-- List all tables in the 'mysql' database;
+CREATE DATABASE IF NOT EXISTS hbtn_0c_0;
