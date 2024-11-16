@@ -1,9 +1,10 @@
--- Create the user if it does not exist
+-- Script to create MySQL root user user_0d_1 with all privileges
+
+-- Create user if not exists
 CREATE USER IF NOT EXISTS 'user_0d_1'@'localhost' IDENTIFIED BY 'user_0d_1_pwd';
 
--- Grant all privileges to the user
+-- Grant all privileges to the user on all databases and tables
 GRANT ALL PRIVILEGES ON *.* TO 'user_0d_1'@'localhost' WITH GRANT OPTION;
 
--- Apply the changes
+-- Reload privileges
 FLUSH PRIVILEGES;
-
