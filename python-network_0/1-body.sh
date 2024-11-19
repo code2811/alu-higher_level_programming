@@ -1,3 +1,3 @@
 #!/bin/bash
-# Script to retrieve body with automatic redirection handling
-curl -sL "$1"`
+# Script to retrieve body with redirection handling
+curl -sL "$1"
