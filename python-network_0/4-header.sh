@@ -1,3 +1,3 @@
 #!/bin/bash
-# Script to send GET request with custom header and validate route
-curl -s -H "X-HolbertonSchool-User-Id: 98" "$1" | echo "OK"i
+# Script that sends a GET request with X-HolbertonSchool-User-Id header
+curl -sH "X-HolbertonSchool-User-Id: 98" "$1"
