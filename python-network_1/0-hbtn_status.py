@@ -1,16 +1,20 @@
 #!/usr/bin/python3
 """
-Module to fetch status from a given URL using urllib.
-Displays response details as specified.
+Module to fetch and display status from a given URL.
+
+This script uses urllib to retrieve the status of a specified URL
+and prints details about the response body.
 """
 import urllib.request
 
-def fetch_status():
+def fetch_status(url='https://intranet.hbtn.io/status'):
     """
-    Fetch and display status from the specified URL.
+    Fetch status from the given URL and display response details.
+
+    Args:
+        url (str): URL to fetch status from. 
+                   Defaults to 'https://intranet.hbtn.io/status'
     """
-    url = 'https://intranet.hbtn.io/status'
-    
     with urllib.request.urlopen(url) as response:
         body = response.read()
         
