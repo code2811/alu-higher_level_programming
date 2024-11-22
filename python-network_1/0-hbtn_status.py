@@ -1,7 +1,15 @@
+#!/usr/bin/python3
+"""
+Module to fetch status from a given URL using urllib.
+Displays response details as specified.
+"""
 import urllib.request
 
 def fetch_status():
-    url = 'https://alu-intranet.hbtn.io/status'
+    """
+    Fetch and display status from the specified URL.
+    """
+    url = 'https://intranet.hbtn.io/status'
     
     with urllib.request.urlopen(url) as response:
         body = response.read()
