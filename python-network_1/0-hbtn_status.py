@@ -1,12 +1,17 @@
 #!/usr/bin/python3
 """
-Fetches https://alu-intranet.hbtn.io/status using urllib
+A script that fetches the content of a given URL using urllib.
+
+The body of the response is displayed with:
+    - type: the type of the response content
+    - content: the raw content (bytes)
+    - utf8 content: the decoded content (string)
 """
 
 import urllib.request
 
 if __name__ == "__main__":
-    url = "https://alu-intranet.hbtn.io/status"
+    url = "http://0.0.0.0:5050/status"  # You can replace this with any URL.
 
     with urllib.request.urlopen(url) as response:
         content = response.read()
