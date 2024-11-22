@@ -1,21 +1,17 @@
 #!/usr/bin/python3
-"""Module to fetch status from a given URL."""
+"""
+Fetches https://alu-intranet.hbtn.io/status using urllib
+"""
+
 import urllib.request
 
-def fetch_status():
-    """Fetch and display status from the specified URL."""
-    url = 'https://intranet.hbtn.io/status'
-    
-    try:
-        with urllib.request.urlopen(url) as response:
-            body = response.read()
-            
-            print("Body response:")
-            print("\t- type: {}".format(type(body)))
-            print("\t- content: {}".format(body))
-            print("\t- utf8 content: {}".format(body.decode('utf-8')))
-    except Exception as e:
-        print("Error fetching status:", e)
-
 if __name__ == "__main__":
-    fetch_status()i
+    url = "https://alu-intranet.hbtn.io/status"
+
+    with urllib.request.urlopen(url) as response:
+        content = response.read()
+        print("Body response:")
+        print(f"\t- type: {type(content)}")
+        print(f"\t- content: {content}")
+        print(f"\t- utf8 content: {content.decode('utf-8')}")
+i
