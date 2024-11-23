@@ -1,4 +1,4 @@
-i#!/usr/bin/python3
+#!/usr/bin/python3
 """
 A script that fetches the content of a given URL using urllib.
 
