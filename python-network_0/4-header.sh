@@ -1,3 +1,4 @@
 #!/bin/bash
-# Script that sends a GET request to validate route with header parameter
-curl -sH "X-HolbertonSchool-User-Id: 98" "$1"i
+# A Bash script to send a GET request with a custom header and display the response body
+curl -s -H "X-HolbertonSchool-User-Id: 98" "$1"
+i
