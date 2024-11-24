@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""Script that takes URL and email as input, sends POST request, displays response"""
+"""
+Script that sends a POST request to a URL with an email parameter.
+Uses urllib package to handle HTTP requests and sys for argument parsing.
+Displays the response body decoded in UTF-8.
+"""
 import urllib.request
 import urllib.parse
 import sys
@@ -7,32 +11,25 @@ import sys
 
 def post_email(url, email):
     """
-    Send POST request to URL with email parameter and print response
+    Sends POST request to specified URL with email parameter and prints response.
+
     Args:
-        url: target URL to send POST request
-        email: email to be sent as parameter
+        url (str): The URL to send the POST request to
+        email (str): The email to be sent as a parameter
+
+    Returns:
+        None. Prints the response body to stdout.
     """
-    # Prepare the email data to be sent
     data = urllib.parse.urlencode({'email': email})
     data = data.encode('utf-8')
 
-    try:
-        # Create request object with URL and data
-        req = urllib.request.Request(url, data=data, method='POST')
-
-        # Send request and get response using with statement
-        with urllib.request.urlopen(req) as response:
-            # Read and decode response
-            body = response.read().decode('utf-8')
-            print(body)
-
-    except urllib.error.URLError as e:
-        print(f"Error: {e}")
-        sys.exit(1)
+    req = urllib.request.Request(url, data=data, method='POST')
+    with urllib.request.urlopen(req) as response:
+        body = response.read().decode('utf-8')
+        print(body)
 
 
 if __name__ == "__main__":
-    # Get URL and email from command line arguments
     url = sys.argv[1]
     email = sys.argv[2]
     post_email(url, email)
