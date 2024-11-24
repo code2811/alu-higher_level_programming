@@ -1,18 +1,26 @@
 #!/usr/bin/python3
-"""Module to retrieve X-Request-Id from URL response header."""
+"""
+Script that sends a request to a URL and displays the X-Request-Id header value.
+Uses urllib package to handle HTTP requests and sys for argument parsing.
+"""
 import urllib.request
 import sys
 
-def get_x_request_id(url):
+
+def get_request_id(url):
     """
-    Send request to URL and print X-Request-Id header value.
-    
+    Sends GET request to URL and prints X-Request-Id header value.
+
     Args:
-        url (str): URL to send request to
+        url (str): The URL to send the request to
+
+    Returns:
+        None. Prints the X-Request-Id header value to stdout.
     """
     with urllib.request.urlopen(url) as response:
-        x_request_id = response.getheader('X-Request-Id')
-        print(x_request_id)
+        print(response.getheader('X-Request-Id'))
+
 
 if __name__ == "__main__":
-    get_x_request_id(sys.argv[1])ii
+    url = sys.argv[1]
+    get_request_id(url)
