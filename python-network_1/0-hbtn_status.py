@@ -1,18 +1,24 @@
 #!/usr/bin/python3
-"""A Python script that fetches a status URL.
-
-This script uses urllib package to make a request to a URL
-and displays information about the response including its
-type, content in bytes, and UTF-8 decoded content.
 """
-from urllib import request
+Script that fetches https://alu-intranet.hbtn.io/status using urllib package
+and displays the body response with specific formatting.
+"""
+import urllib.request
+
+
+def fetch_status():
+    """
+    Fetches the status from ALU intranet and displays the response body
+    with specific formatting for type, content, and utf8 content.
+    """
+    url = "https://alu-intranet.hbtn.io/status"
+    with urllib.request.urlopen(url) as response:
+        body = response.read()
+        print("Body response:")
+        print("\t- type: {}".format(type(body)))
+        print("\t- content: {}".format(body))
+        print("\t- utf8 content: {}".format(body.decode('utf-8')))
 
 
 if __name__ == "__main__":
-    url = 'https://intranet.hbtn.io/status'
-    with request.urlopen(url) as response:
-        content = response.read()
-        print("Body response:")
-        print("\t- type: {}".format(type(content)))
-        print("\t- content: {}".format(content))
-        print("\t- utf8 content: {}".format(content.decode('utf-8')))i
+    fetch_status()
