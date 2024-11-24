@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script that fetches https://alu-intranet.hbtn.io/status using requests package
+Script that fetches http://0.0.0.0:5050/status using requests package
 and displays the body response with specific formatting.
 """
 import requests
@@ -8,10 +8,10 @@ import requests
 
 def fetch_status():
     """
-    Fetches the status from ALU intranet and displays the response body
+    Fetches the status from local test server and displays the response body
     with specific formatting for type and content.
     """
-    url = "https://alu-intranet.hbtn.io/status"
+    url = "http://0.0.0.0:5050/status"
     response = requests.get(url)
     print("Body response:")
     print("\t- type: {}".format(type(response.text)))
