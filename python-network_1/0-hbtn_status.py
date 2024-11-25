@@ -7,6 +7,7 @@ a status page and display its contents with detailed information.
 """
 import urllib.request
 
+
 def fetch_status(url):
     """
     Fetch status from the specified URL and display response details.
@@ -20,7 +21,6 @@ def fetch_status(url):
     try:
         with urllib.request.urlopen(url) as response:
             body = response.read()
-            
             print("Body response:")
             print("\t- type: {}".format(type(body)))
             print("\t- content: {}".format(body))
@@ -28,6 +28,7 @@ def fetch_status(url):
     
     except urllib.error.URLError as e:
         print("Error fetching status: {}".format(e))
+
 
 def main():
     """
@@ -42,3 +43,7 @@ def main():
     
     for url in urls:
         fetch_status(url)
+
+
+if __name__ == "__main__":
+    main()
