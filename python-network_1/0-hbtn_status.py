@@ -1,24 +1,19 @@
-#!/usr/bin/python3
-"""
-Script that fetches https://alu-intranet.hbtn.io/status using urllib package
-and displays the body response with specific formatting.
-"""
-import urllib.request
-
-
-def fetch_status():
+Fetch status from https://alu-intranet.hbtn.io/status
+    and display the response details
     """
-    Fetches the status from ALU intranet and displays the response body
-    with specific formatting for type, content, and utf8 content.
-    """
-    url = "https://alu-intranet.hbtn.io/status"
-    with urllib.request.urlopen(url) as response:
-        body = response.read()
-        print("Body response:")
-        print("\t- type: {}".format(type(body)))
-        print("\t- content: {}".format(body))
-        print("\t- utf8 content: {}".format(body.decode('utf-8')))
-
+    url = 'https://alu-intranet.hbtn.io/status'
+    
+    try:
+        with urllib.request.urlopen(url) as response:
+            body = response.read()
+            
+            print("Body response:")
+            print("\t- type: {}".format(type(body)))
+            print("\t- content: {}".format(body))
+            print("\t- utf8 content: {}".format(body.decode('utf-8')))
+    
+    except urllib.error.URLError as e:
+        print("Error fetching status: {}".format(e))
 
 if __name__ == "__main__":
-    fetch_status()
+    fetch_hbtn_status()
