@@ -1,27 +1,31 @@
 #!/usr/bin/python3
 """
-Select all records from states table
+Script to list states starting with N from a MySQL database
 """
-from sys import argv
-
 import MySQLdb
+import sys
 
 if __name__ == "__main__":
-    username, password, database = argv[1:4]
-    # default host is 'localhost' and default port is '3306'
-    connection = MySQLdb.connect(
-        user=username,
-        password=password,
-        db=database
+    # Connect to MySQL database
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3]
     )
 
-    cursor = connection.cursor()
-    cursor.execute(
-        'SELECT * FROM states WHERE '
-        'states.name LIKE BINARY "N%" ORDER BY states.id')
-    states = cursor.fetchall()
+    # Create a cursor object
+    cursor = db.cursor()
 
-    for state in states:
+    # Execute query to select states starting with N, sorted by id
+    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+
+    # Fetch and print results
+    results = cursor.fetchall()
+    for state in results:
         print(state)
 
-    connection.close()
+    # Close database connections
+    cursor.close()
+    db.close()
