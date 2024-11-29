@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """
-Module 0-select_states
-Lists all states from the database hbtn_0e_0_usa in ascending order by id.
+Select all records from states table
 """
-
 from sys import argv
 
 import MySQLdb
@@ -18,7 +16,9 @@ if __name__ == "__main__":
     )
 
     cursor = connection.cursor()
-    cursor.execute('SELECT * FROM states ORDER BY states.id')
+    cursor.execute(
+        'SELECT * FROM states WHERE '
+        'states.name LIKE BINARY "N%" ORDER BY states.id')
     states = cursor.fetchall()
 
     for state in states:
