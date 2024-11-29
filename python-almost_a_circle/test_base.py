@@ -1,89 +1,38 @@
-#!/usr/bin/python3
-"""
-Test Base class
-"""
 import unittest
-
 from models.base import Base
 
-
-class BaseTest(unittest.TestCase):
-    """
-    Test Base class
-    """
-
-    def test_auto_ids(self):
-        """
-        Test auto ids
-        """
+class TestBase(unittest.TestCase):
+    def test_auto_id(self):
         b1 = Base()
-        b2 = Base(12)
-        b3 = Base()
-        self.assertEqual(b1.id, b3.id - 1)
+        b2 = Base()
+        self.assertEqual(b1.id + 1, b2.id)
 
-    def test_manual_ids(self):
-        """
-        Test manual ids
-        """
-        b1 = Base(98)
-        self.assertEqual(b1.id, 98)
-
-    def test_ids_is_None(self):
-        """
-        Test ids is None
-        """
-        b1 = Base(None)
-        b2 = Base(None)
-        b3 = Base(None)
-        self.assertEqual(b1.id, b3.id - 2)
-
-    def test_to_json_string_empty(self):
-        """
-        Test to_json_string empty
-        """
-        json_dictionary = Base.to_json_string([])
-        self.assertEqual(json_dictionary, "[]")
+    def test_specific_id(self):
+        b = Base(89)
+        self.assertEqual(b.id, 89)
 
     def test_to_json_string_none(self):
-        """
-        Test to_json_string None
-        """
-        json_dictionary = Base.to_json_string(None)
-        self.assertEqual(json_dictionary, "[]")
+        self.assertEqual(Base.to_json_string(None), "[]")
 
-    def test_to_json_string_single_dict(self):
-        """
-        Test to_json_string single dict
-        """
-        dict_input = [{'id': 12}]
-        json_output = Base.to_json_string(dict_input)
-        self.assertEqual(json_output, '[{"id": 12}]')
-        self.assertIsInstance(json_output, str)
+    def test_to_json_string_empty(self):
+        self.assertEqual(Base.to_json_string([]), "[]")
 
-    def test_from_json_string_empty(self):
-        """
-        Test from_json_string empty
-        """
-        list_output = Base.from_json_string("[]")
-        self.assertEqual(list_output, [])
-        self.assertIsInstance(list_output, list)
+    def test_to_json_string(self):
+        data = [{"id": 12}]
+        json_str = Base.to_json_string(data)
+        self.assertEqual(json_str, '[{"id": 12}]')
 
     def test_from_json_string_none(self):
-        """
-        Test from_json_string None
-        """
-        list_output = Base.from_json_string(None)
-        self.assertEqual(list_output, [])
-        self.assertIsInstance(list_output, list)
+        self.assertEqual(Base.from_json_string(None), [])
 
-    def test_from_json_string_single_dict(self):
-        """
-        Test from_json_string single dict
-        """
-        list_output = Base.from_json_string('[{"id": 89}]')
-        self.assertEqual(list_output, [{'id': 89}])
-        self.assertIsInstance(list_output, list)
+    def test_from_json_string_empty(self):
+        self.assertEqual(Base.from_json_string("[]"), [])
 
+    def test_from_json_string(self):
+        json_str = '[{"id": 89}]'
+        data = Base.from_json_string(json_str)
+        self.assertEqual(data, [{"id": 89}])
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
+
