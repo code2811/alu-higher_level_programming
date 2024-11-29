@@ -1,25 +1,32 @@
 #!/usr/bin/python3
-"""
-Select all records from states table
-"""
-from sys import argv
+"""Defines the Square class."""
+from models.rectangle import Rectangle
 
-import MySQLdb
 
-if __name__ == "__main__":
-    username, password, database = argv[1:4]
-    # default host is 'localhost' and default port is '3306'
-    connection = MySQLdb.connect(
-        user=username,
-        password=password,
-        db=database
-    )
+class Square(Rectangle):
+    """Represents a square."""
 
-    cursor = connection.cursor()
-    cursor.execute('SELECT * FROM states ORDER BY states.id')
-    states = cursor.fetchall()
+    def __init__(self, size, x=0, y=0, id=None):
+        """Initialize a new Square instance."""
+        super().__init__(size, size, x, y, id)
 
-    for state in states:
-        print(state)
+    @property
+    def size(self):
+        """Get the size of the square."""
+        return self.width
 
-    connection.close()
+    @size.setter
+    def size(self, value):
+        """Set the size of the square."""
+        self.width = value
+        self.height = value
+
+    def to_dictionary(self):
+        """Return the dictionary representation of the Square."""
+        return {
+            'id': self.id,
+            'size': self.size,
+            'x': self.x,
+            'y': self.y
+        }
+
