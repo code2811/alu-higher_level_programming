@@ -7,4 +7,3 @@ if (args.length <= 1) {
   const sortedArgs = args.sort((a, b) => b - a); // Sort in descending order
   console.log(sortedArgs[1]); // Second biggest number
 }
-

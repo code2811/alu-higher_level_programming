@@ -5,8 +5,6 @@ const myObject = {
 };
 console.log(myObject);
 
-// Update the value
 myObject.value = 89;
 
 console.log(myObject);
-
